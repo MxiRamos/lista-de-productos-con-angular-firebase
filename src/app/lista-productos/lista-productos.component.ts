@@ -14,7 +14,7 @@ export class ListaProductosComponent implements OnInit {
   ubicacion:string=""
   precio:number=0
   productos: Producto[] = []
-  indice:number = 0
+  
 
   
 
@@ -23,22 +23,21 @@ export class ListaProductosComponent implements OnInit {
               private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.productos= this.productoService.obtenerProductosServicio()
+    //this.productos= this.productoService.obtenerProductosServicio()
 
+    this.productoService.obtenerProductosServicio().subscribe(misProductos=>{
+
+      this.productos=Object.values(misProductos)
+
+      this.productoService.setEmpleados(this.productos)
+    })
     
-    
   }
 
-  agregarProducto(){
-    let producto1 = new Producto(this.producto, this.categoria, this.ubicacion, this.precio)
-    this.productos.push(producto1)
-  }
-
-  eliminarProducto(){
-    this.router.navigate(['crear'])
-  }
   
-  editarProducto(){
-    this.router.navigate(['/crear'])
+
+  eliminarProducto(indice:number){
+    this.productoService.eliminarProductoServicio(indice)
   }
+
 }

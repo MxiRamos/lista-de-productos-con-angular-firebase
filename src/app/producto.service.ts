@@ -1,21 +1,45 @@
+import { Injectable } from "@angular/core";
+import { DataServices } from "./data.services";
 import { Producto } from "./producto.module";
 
-
+@Injectable()
 export class ProductosService{
     productos:Producto[] = []
 
+    constructor(private dataService:DataServices){}
 
     agregarProductoServicio(producto:Producto){
         this.productos.push(producto)
 
+        this.dataService.guardarProductos(this.productos)
     }
 
-    modificarProductoServicio(index:number, producto:Producto){
-        let producto1 = this.productos[index]
-        producto1.producto = producto.producto
-        producto1.categoria = producto.categoria
-        producto1.ubicacion = producto.ubicacion
-        producto1.precio = producto.precio
+    modificarProductoServicio(indice:number, producto:Producto){
+        //id
+        let productoModificado = this.productos[indice]
+        
+        productoModificado.producto = producto.producto
+        productoModificado.categoria = producto.categoria
+        productoModificado.ubicacion = producto.ubicacion
+        productoModificado.precio = producto.precio
+
+        //id
+        this.dataService.actualizarProductos(indice, producto)
+    }
+
+    eliminarProductoServicio(indice:number){
+        this.productos.splice(indice,1)
+
+        this.dataService.eliminarProducto(indice)
+
+        if(this.productos != null){
+            this.dataService.guardarProductos(this.productos)
+        }
+    }
+
+    setEmpleados(misProductos:Producto[]){
+
+        this.productos=misProductos
     }
 
     encontrarProducto(indice:number){
@@ -23,8 +47,9 @@ export class ProductosService{
         return producto
     }
 
+    //obtiene productos de la base de datos
     obtenerProductosServicio(){
-        return this.productos
+        return this.dataService.cargarProductos()
     }
 
 }

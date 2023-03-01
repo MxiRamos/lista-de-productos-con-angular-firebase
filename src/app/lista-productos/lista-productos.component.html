@@ -8,7 +8,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            
+                            <th scope="col"></th>
                             <th scope="col">Producto</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Ubicacion</th>
@@ -18,14 +18,14 @@
                         </thead>
                         <tbody class="table-group-divider">
                         <tr *ngFor="let producto of productos; let i=index">
-                           
+                            <td>{{i+1}}</td>
                             <td>{{producto.producto}}</td>
                             <td>{{producto.categoria}}</td>
                             <td>{{producto.ubicacion}}</td>
                             <td>{{producto.precio}}</td>
                             <td>
-                                <a (click)="eliminarProducto()" ><i class="fa-solid fa-trash" ></i></a>
-                                <a [routerLink]="['/actualizar', indice]"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a (click)="eliminarProducto(i)"><i class="fa-solid fa-trash" ></i></a>
+                                <a [routerLink]="['/actualizar', i]"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <!--<a (click)="editarProducto()"><i class="fa-solid fa-pen-to-square"></i></a>-->
                             </td>
                         </tr>

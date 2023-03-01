@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductosService } from './producto.service';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'
+import { DataServices } from './data.services';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,10 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
-  providers: [ProductosService],
+  providers: [ProductosService, DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

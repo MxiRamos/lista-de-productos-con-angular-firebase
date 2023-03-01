@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from '../producto.module';
 import { ProductosService } from '../producto.service';
 
@@ -14,16 +14,18 @@ export class ActualizarProductoComponent implements OnInit {
   ubicacion:string = ""
   precio:number = 0
   productos:Producto[]=[]
-  indice:number=0
+  indice:number = 0
   
 
   constructor(private productosService:ProductosService,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
 
     this.productos=this.productosService.productos
     
+    // para obtener el id con el valor del array que queremos modificar en la base de datos
     this.indice = this.route.snapshot.params['id']
   
     let producto:Producto=this.productosService.encontrarProducto(this.indice)
@@ -37,7 +39,11 @@ export class ActualizarProductoComponent implements OnInit {
   }
 
   actualizarProducto(){
+    let miProducto = new Producto(this.producto, this.categoria, this.ubicacion, this.precio)
     
+    this.productosService.modificarProductoServicio(this.indice, miProducto)
+    this.router.navigate([''])
+  
   }
 
 
