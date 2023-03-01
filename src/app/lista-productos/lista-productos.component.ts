@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Producto } from '../producto.module';
 import { ProductosService } from '../producto.service';
 
@@ -13,11 +14,18 @@ export class ListaProductosComponent implements OnInit {
   ubicacion:string=""
   precio:number=0
   productos: Producto[] = []
+  indice:number = 0
 
-  constructor(private productoService:ProductosService) { }
+  
+
+  constructor(private productoService:ProductosService,
+              private router:Router,
+              private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.productos= this.productoService.obtenerProductosServicio()
+
+    
     
   }
 
@@ -26,4 +34,11 @@ export class ListaProductosComponent implements OnInit {
     this.productos.push(producto1)
   }
 
+  eliminarProducto(){
+    this.router.navigate(['crear'])
+  }
+  
+  editarProducto(){
+    this.router.navigate(['/crear'])
+  }
 }

@@ -3,7 +3,7 @@ export class Producto{
     producto:string=""
     categoria:string=""
     ubicacion:string=""
-    precio:number=0
+    precio:number
     
 
     constructor(producto: string, categoria: string, ubicacion: string, precio: number){

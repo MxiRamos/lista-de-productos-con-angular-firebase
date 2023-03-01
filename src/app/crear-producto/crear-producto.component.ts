@@ -24,7 +24,12 @@ export class CrearProductoComponent implements OnInit {
 
   agregarProducto(){
     let producto1 = new Producto(this.producto, this.categoria, this.ubicacion, this.precio)
-    this.productoService.agregarProductoServicio(producto1)
-    this.router.navigate([''])
+    if(producto1.producto === "" || producto1.categoria === "" || producto1.ubicacion === ""){
+      this.router.navigate([''])
+    }else{
+      this.productoService.agregarProductoServicio(producto1)
+      this.router.navigate([''])
+    }
+    
   }
 }

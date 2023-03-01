@@ -8,18 +8,22 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductosService } from './producto.service';
+import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaProductosComponent,
-    CrearProductoComponent
+    CrearProductoComponent,
+    ActualizarProductoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [ProductosService],
   bootstrap: [AppComponent]

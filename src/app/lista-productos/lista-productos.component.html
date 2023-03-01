@@ -1,5 +1,5 @@
-<div class="container mt-5">
-    <div class="row">
+
+    <div class="row mt-5" id="div2">
         <div class="col-lg-8 offset-lg-2">
             <div class="card" >
                 <div class="card-body">
@@ -8,18 +8,26 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            
                             <th scope="col">Producto</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Ubicacion</th>
                             <th scope="col">Precio</th>
+                            
                         </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                        <tr *ngFor="let producto of productos">
+                        <tr *ngFor="let producto of productos; let i=index">
+                           
                             <td>{{producto.producto}}</td>
                             <td>{{producto.categoria}}</td>
                             <td>{{producto.ubicacion}}</td>
                             <td>{{producto.precio}}</td>
+                            <td>
+                                <a (click)="eliminarProducto()" ><i class="fa-solid fa-trash" ></i></a>
+                                <a [routerLink]="['/actualizar', indice]"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <!--<a (click)="editarProducto()"><i class="fa-solid fa-pen-to-square"></i></a>-->
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -27,4 +35,4 @@
             </div>
         </div>
     </div>
-</div>
+
