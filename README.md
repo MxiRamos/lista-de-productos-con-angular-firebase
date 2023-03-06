@@ -1,3 +1,11 @@
+# Proyecto Angular 
+
+Proyecto Angular creado con la version 13.3.0 y firebase como base de datos
+Una Lista de Productos con los datos del nombre del producto, categorio del producto, Ubicacion del producto y precio del producto. 
+Se puede agregar, eliminar o editar.
+Para ver los productos, agregar, eliminar o editar se necesita iniciar sesion en la seccion de login.
+
+
 # ListadoDeProductos
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
