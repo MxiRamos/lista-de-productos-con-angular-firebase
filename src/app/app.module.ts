@@ -12,6 +12,11 @@ import { ActualizarProductoComponent } from './actualizar-producto/actualizar-pr
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'
 import { DataServices } from './data.services';
+import { LoginComponent } from './login/login.component';
+import { ErrorComponent } from './error/error.component';
+import { LoginService } from './login/login.service';
+import { LoginGuardian } from './login/login-guardian';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,8 @@ import { DataServices } from './data.services';
     ListaProductosComponent,
     CrearProductoComponent,
     ActualizarProductoComponent,
+    LoginComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,7 @@ import { DataServices } from './data.services';
     CommonModule,
     HttpClientModule
   ],
-  providers: [ProductosService, DataServices],
+  providers: [ProductosService, DataServices, LoginService, LoginGuardian, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

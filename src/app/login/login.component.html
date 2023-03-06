@@ -1,0 +1,21 @@
+
+<div class="row mt-5 div1" id="div2">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card" >
+            <form class="card-body" #f="ngForm" (ngSubmit)="f.form.valid && login(f)">
+                <h1>Crear Producto</h1>
+
+                Email: <input type="text" name="email" placeholder="Email" class="form-control"  ngModel >
+                <br>
+                
+                Contraseña: <input type="password" name="password" placeholder="Contraseña" class="form-control" ngModel >
+                <br>
+                
+                
+                <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+
+                <button class="btn btn-primary float-end" routerLink="">Volver a Inicio</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 import { Producto } from '../producto.module';
 import { ProductosService } from '../producto.service';
 
@@ -20,17 +21,20 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(private productoService:ProductosService,
               private router:Router,
-              private route:ActivatedRoute) { }
+              private route:ActivatedRoute,
+              private loginService:LoginService,) { }
 
   ngOnInit(): void {
     //this.productos= this.productoService.obtenerProductosServicio()
 
     this.productoService.obtenerProductosServicio().subscribe(misProductos=>{
+      console.log(misProductos)
 
       this.productos=Object.values(misProductos)
 
       this.productoService.setEmpleados(this.productos)
     })
+
     
   }
 
@@ -39,5 +43,6 @@ export class ListaProductosComponent implements OnInit {
   eliminarProducto(indice:number){
     this.productoService.eliminarProductoServicio(indice)
   }
+
 
 }
